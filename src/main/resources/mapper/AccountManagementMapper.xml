@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.AccountManagementMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.AccountManagement">
+            <id property="accountManagementId" column="account_management_id" jdbcType="BIGINT"/>
+            <result property="systemId" column="system_id" jdbcType="INTEGER"/>
+            <result property="ipAddress" column="ip_address" jdbcType="VARCHAR"/>
+            <result property="post" column="post" jdbcType="VARCHAR"/>
+            <result property="accountName" column="account_name" jdbcType="VARCHAR"/>
+            <result property="accountClass" column="account_class" jdbcType="OTHER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="loginMode" column="login_mode" jdbcType="OTHER"/>
+            <result property="accountRole" column="account_role" jdbcType="OTHER"/>
+            <result property="accountAuthority" column="account_authority" jdbcType="OTHER"/>
+            <result property="authorizationDate" column="authorization_date" jdbcType="DATE"/>
+            <result property="expirationDate" column="expiration_date" jdbcType="DATE"/>
+            <result property="passwordStrength" column="password_strength" jdbcType="OTHER"/>
+            <result property="passwordChange" column="password_change" jdbcType="OTHER"/>
+            <result property="passwordLastChange" column="password_last_change" jdbcType="DATE"/>
+            <result property="responsibleUnit" column="responsible_unit" jdbcType="OTHER"/>
+            <result property="responsiblePerson" column="responsible_person" jdbcType="VARCHAR"/>
+            <result property="conta" column="conta" jdbcType="INTEGER"/>
+            <result property="user" column="user" jdbcType="VARCHAR"/>
+            <result property="userUnit" column="user_unit" jdbcType="VARCHAR"/>
+            <result property="userContact" column="user_contact" jdbcType="INTEGER"/>
+            <result property="fwaf" column="fwaf" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        account_management_id,system_id,ip_address,
+        post,account_name,account_class,
+        create_time,update_time,login_mode,
+        account_role,account_authority,authorization_date,
+        expiration_date,password_strength,password_change,
+        password_last_change,responsible_unit,responsible_person,
+        conta,user,user_unit,
+        user_contact,fwaf
+    </sql>
+</mapper>

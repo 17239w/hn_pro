@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.TablesMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.Tables">
+            <id property="tablesId" column="tables_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="chineseName" column="Chinese_name" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="fkTables" column="fk_tables" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="templatePath" column="template_path" jdbcType="VARCHAR"/>
+            <result property="isMultiParents" column="is_multi_parents" jdbcType="BIT"/>
+            <result property="flagCurrentParentMap" column="flag_current_parent_map" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        tables_id,name,Chinese_name,
+        update_time,fk_tables,create_time,
+        template_path,is_multi_parents,flag_current_parent_map
+    </sql>
+</mapper>

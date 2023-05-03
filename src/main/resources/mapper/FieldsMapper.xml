@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.FieldsMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.Fields">
+            <id property="fieldsId" column="fields_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="chineseName" column="Chinese_name" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="size" column="size" jdbcType="INTEGER"/>
+            <result property="isPrimary" column="is_primary" jdbcType="TINYINT"/>
+            <result property="isNonnull" column="is_nonnull" jdbcType="TINYINT"/>
+            <result property="defaultValue" column="default_value" jdbcType="VARCHAR"/>
+            <result property="filterType" column="filter_type" jdbcType="VARCHAR"/>
+            <result property="enumMap" column="enum_map" jdbcType="VARCHAR"/>
+            <result property="regexCondition" column="regex_condition" jdbcType="VARCHAR"/>
+            <result property="tablesTablesId" column="tables_tables_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        fields_id,name,Chinese_name,
+        description,type,size,
+        is_primary,is_nonnull,default_value,
+        filter_type,enum_map,regex_condition,
+        tables_tables_id
+    </sql>
+</mapper>

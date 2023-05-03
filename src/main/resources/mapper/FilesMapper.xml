@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.FilesMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.Files">
+            <id property="filesId" column="files_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="isDir" column="is_dir" jdbcType="BIT"/>
+            <result property="father" column="father" jdbcType="BIGINT"/>
+            <result property="path" column="path" jdbcType="VARCHAR"/>
+            <result property="size" column="size" jdbcType="BIGINT"/>
+            <result property="ext" column="ext" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        files_id,name,is_dir,
+        father,path,size,
+        ext,create_time,update_time
+    </sql>
+</mapper>

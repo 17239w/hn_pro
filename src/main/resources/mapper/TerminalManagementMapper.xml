@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.TerminalManagementMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.TerminalManagement">
+            <id property="terminalManagementId" column="terminal_management_id" jdbcType="BIGINT"/>
+            <result property="responsibleUnit" column="responsible_unit" jdbcType="OTHER"/>
+            <result property="responsiblePerson" column="responsible_person" jdbcType="VARCHAR"/>
+            <result property="terminalType" column="terminal_type" jdbcType="OTHER"/>
+            <result property="theThirdPartyName" column="the_third_party_name" jdbcType="VARCHAR"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="contact" column="contact" jdbcType="INTEGER"/>
+            <result property="osType" column="OS_type" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="ip1" column="ip1" jdbcType="VARCHAR"/>
+            <result property="mac1" column="mac1" jdbcType="VARCHAR"/>
+            <result property="ip2" column="ip2" jdbcType="VARCHAR"/>
+            <result property="mac2" column="mac2" jdbcType="VARCHAR"/>
+            <result property="passwordCompliance" column="password_compliance" jdbcType="OTHER"/>
+            <result property="firewallOn" column="firewall_on" jdbcType="OTHER"/>
+            <result property="antivirusSoftware" column="antivirus_software" jdbcType="OTHER"/>
+            <result property="updatePatches" column="update_patches" jdbcType="OTHER"/>
+            <result property="sensitiveFileEncrypt" column="sensitive_file_encrypt" jdbcType="OTHER"/>
+            <result property="verificationDate" column="verification_date" jdbcType="DATE"/>
+            <result property="commitmentLetter" column="commitment_letter" jdbcType="VARCHAR"/>
+            <result property="fcwa" column="fcwa" jdbcType="VARCHAR"/>
+            <result property="wagaf" column="wagaf" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        terminal_management_id,responsible_unit,responsible_person,
+        terminal_type,the_third_party_name,user_name,
+        contact,OS_type,create_time,
+        update_time,ip1,mac1,
+        ip2,mac2,password_compliance,
+        firewall_on,antivirus_software,update_patches,
+        sensitive_file_encrypt,verification_date,commitment_letter,
+        fcwa,wagaf
+    </sql>
+</mapper>

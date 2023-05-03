@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.PagesMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.Pages">
+            <id property="pagesId" column="pages_id" jdbcType="BIGINT"/>
+            <result property="tablesId" column="tables_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="superior" column="superior" jdbcType="VARCHAR"/>
+            <result property="defaultDisplay" column="default_display" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="defaultSearch" column="default_search" jdbcType="VARCHAR"/>
+            <result property="hasPromptBox" column="has_prompt_box" jdbcType="BIT"/>
+            <result property="promptCondition" column="prompt_condition" jdbcType="VARCHAR"/>
+            <result property="promptMsg" column="prompt_msg" jdbcType="VARCHAR"/>
+            <result property="promptDisplayFields" column="prompt_display_fields" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        pages_id,tables_id,name,
+        description,url,superior,
+        default_display,create_time,update_time,
+        default_search,has_prompt_box,prompt_condition,
+        prompt_msg,prompt_display_fields
+    </sql>
+</mapper>

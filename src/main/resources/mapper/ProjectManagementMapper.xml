@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.ProjectManagementMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.ProjectManagement">
+            <id property="projectManagementId" column="project_management_id" jdbcType="BIGINT"/>
+            <result property="projectName" column="project_name" jdbcType="VARCHAR"/>
+            <result property="projectManager" column="project_manager" jdbcType="VARCHAR"/>
+            <result property="department" column="department" jdbcType="VARCHAR"/>
+            <result property="projectYear" column="project_year" jdbcType="VARCHAR"/>
+            <result property="projectAttribute" column="project_attribute" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="threeSynonymousRequests" column="three_synonymous_requests" jdbcType="OTHER"/>
+            <result property="finishTime" column="finish_time" jdbcType="DATE"/>
+            <result property="riskAssessmentTime" column="risk_assessment_time" jdbcType="DATE"/>
+            <result property="fillingTime" column="filling_time" jdbcType="DATE"/>
+            <result property="maintenanceUnit" column="maintenance_unit" jdbcType="VARCHAR"/>
+            <result property="maintenanceManager" column="maintenance_manager" jdbcType="VARCHAR"/>
+            <result property="systemOnlineTime" column="system_online_time" jdbcType="DATE"/>
+            <result property="initialInspectionTime" column="initial_inspection_time" jdbcType="DATE"/>
+            <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        project_management_id,project_name,project_manager,
+        department,project_year,project_attribute,
+        create_time,update_time,three_synonymous_requests,
+        finish_time,risk_assessment_time,filling_time,
+        maintenance_unit,maintenance_manager,system_online_time,
+        initial_inspection_time,remarks
+    </sql>
+</mapper>

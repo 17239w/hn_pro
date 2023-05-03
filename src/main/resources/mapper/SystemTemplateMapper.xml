@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hn.mapper.SystemTemplateMapper">
+
+    <resultMap id="BaseResultMap" type="com.hn.domain.SystemTemplate">
+            <id property="systemTemplateId" column="system_template_id" jdbcType="BIGINT"/>
+            <result property="customFilesId" column="custom_files_id" jdbcType="BIGINT"/>
+            <result property="systemId" column="system_id" jdbcType="VARCHAR"/>
+            <result property="systemName" column="system_name" jdbcType="VARCHAR"/>
+            <result property="systemDescription" column="system_description" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="protectingMeasures" column="protecting_measures" jdbcType="VARCHAR"/>
+            <result property="selectItem" column="select_item" jdbcType="OTHER"/>
+            <result property="lifeCycle" column="life_cycle" jdbcType="OTHER"/>
+            <result property="constructionCompany" column="construction_company" jdbcType="VARCHAR"/>
+            <result property="constructionTime" column="construction_time" jdbcType="DATE"/>
+            <result property="trafficMaintenance" column="traffic_maintenance" jdbcType="OTHER"/>
+            <result property="maintenance" column="maintenance" jdbcType="OTHER"/>
+            <result property="timeOfMaintenance" column="time_of_maintenance" jdbcType="DATE"/>
+            <result property="crossDimensionTime" column="cross_dimension_time" jdbcType="DATE"/>
+            <result property="gradeRecord" column="grade_record" jdbcType="OTHER"/>
+            <result property="gradingUnitName" column="grading_unit_name" jdbcType="VARCHAR"/>
+            <result property="gradeRecordLevel" column="grade_record_level" jdbcType="OTHER"/>
+            <result property="gradeRecordTime" column="grade_record_time" jdbcType="DATE"/>
+            <result property="subordinDepartment" column="subordin_department" jdbcType="VARCHAR"/>
+            <result property="maintenanceUnit" column="maintenance_unit" jdbcType="OTHER"/>
+            <result property="responsiblePerson" column="responsible_person" jdbcType="VARCHAR"/>
+            <result property="contact" column="contact" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        system_template_id,custom_files_id,system_id,
+        system_name,system_description,create_time,
+        update_time,protecting_measures,select_item,
+        life_cycle,construction_company,construction_time,
+        traffic_maintenance,maintenance,time_of_maintenance,
+        cross_dimension_time,grade_record,grading_unit_name,
+        grade_record_level,grade_record_time,subordin_department,
+        maintenance_unit,responsible_person,contact
+    </sql>
+</mapper>
