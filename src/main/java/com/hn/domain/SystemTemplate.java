@@ -6,13 +6,18 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @TableName system_template
  */
 @TableName(value ="system_template")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SystemTemplate implements Serializable {
     private Long systemTemplateId;
 

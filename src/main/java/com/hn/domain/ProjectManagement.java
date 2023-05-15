@@ -6,13 +6,18 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @TableName project_management
  */
 @TableName(value ="project_management")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProjectManagement implements Serializable {
     private Long projectManagementId;
 

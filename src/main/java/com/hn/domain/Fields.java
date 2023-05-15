@@ -5,13 +5,18 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @TableName fields
  */
 @TableName(value ="fields")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Fields implements Serializable {
     private Long fieldsId;
 

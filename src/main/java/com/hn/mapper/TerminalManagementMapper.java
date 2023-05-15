@@ -2,6 +2,7 @@ package com.hn.mapper;
 
 import com.hn.domain.TerminalManagement;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author 15170
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2023-05-03 10:37:59
 * @Entity com.hn.domain.TerminalManagement
 */
+@Mapper
 public interface TerminalManagementMapper extends BaseMapper<TerminalManagement> {
 
 }

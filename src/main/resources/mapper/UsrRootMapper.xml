@@ -8,9 +8,13 @@
             <id property="rootId" column="root_id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="deletedFlag" column="deleted_flag" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        root_id,name,password
+        root_id,name,password,
+        create_time,update_time,deleted_flag
     </sql>
 </mapper>

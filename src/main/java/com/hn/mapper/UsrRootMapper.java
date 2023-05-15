@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
 * @author 15170
 * @description 针对表【usr_root】的数据库操作Mapper
-* @createDate 2023-05-03 16:58:25
+* @createDate 2023-05-08 11:42:47
 * @Entity com.hn.domain.UsrRoot
 */
 public interface UsrRootMapper extends BaseMapper<UsrRoot> {

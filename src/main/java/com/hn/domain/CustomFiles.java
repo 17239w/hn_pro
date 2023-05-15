@@ -6,13 +6,18 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @TableName custom_files
  */
 @TableName(value ="custom_files")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomFiles implements Serializable {
     private Long customFilesId;
 
