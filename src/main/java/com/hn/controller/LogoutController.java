@@ -52,5 +52,5 @@ public class LogoutController {
         return "redirect:/adminLogin?logout";
     }
 
-    //这是一行注释
+
 }
