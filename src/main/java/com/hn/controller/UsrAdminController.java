@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.xiaoymin.knife4j.core.util.StrUtil;
 import com.hn.domain.UsrAdmin;
+import com.hn.domain.UsrRoot;
 import com.hn.service.UsrAdminService;
 import com.hn.utils.MD5;
 import com.hn.utils.Result;
@@ -27,7 +28,7 @@ public class UsrAdminController {
      * @param usrAdmin
      * @return
      */
-    @ApiOperation("admin增加/更新UsrAdmin信息")
+    @ApiOperation("增加/更新UsrAdmin")
     @PostMapping("/saveOrUpdateUsrAdmin")
     public Result<Object> saveOrUpdateUsrAdmin(@ApiParam("请求体中封装的UsrAdmin的json信息")
                                                @RequestBody UsrAdmin usrAdmin) {
@@ -56,9 +57,14 @@ public class UsrAdminController {
     public Result<Object> getAllAdmin(@ApiParam("当前页码")@PathVariable("pn")Integer pn,
                                       @ApiParam("每页显示的Admin数量")@PathVariable("pageSize")Integer pageSize,
                                         @ApiParam("模糊条件，要查询的Admin姓名")String AdminName){
-        //根据姓名模糊查询
-        Page<UsrAdmin>page=usrAdminService.page(new Page<>(pn,pageSize),new LambdaQueryWrapper<UsrAdmin>()
-                .like(StrUtil.isNotBlank(AdminName),UsrAdmin::getName,AdminName).orderByAsc(UsrAdmin::getAdminId));
+        //1.构造查询条件
+        LambdaQueryWrapper<UsrAdmin> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        //2.根据姓名模糊查询
+        lambdaQueryWrapper.like(StrUtil.isNotBlank(AdminName),UsrAdmin::getName,AdminName).
+                like(StrUtil.isNotBlank(AdminName),UsrAdmin::getAdminId,AdminName).orderByAsc(UsrAdmin::getAdminId);
+        //3.分页查询,并封装到page对象中
+        Page<UsrAdmin> page = usrAdminService.page(new Page<>(pn, pageSize), lambdaQueryWrapper);
+        //4.返回结果
         return Result.ok(page);
     }
 }

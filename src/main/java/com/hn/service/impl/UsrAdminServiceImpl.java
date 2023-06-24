@@ -32,7 +32,6 @@ public class UsrAdminServiceImpl extends ServiceImpl<UsrAdminMapper, UsrAdmin>
         QueryWrapper<UsrAdmin> queryWrapper= new QueryWrapper<>();
         queryWrapper.eq("usrAdmin_name",usrName).eq("password",password);
         return usrAdminMapper.selectOne(queryWrapper);
-
     }
 
     /**

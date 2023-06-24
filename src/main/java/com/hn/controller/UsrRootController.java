@@ -2,6 +2,7 @@ package com.hn.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.xiaoymin.knife4j.core.util.StrUtil;
 import com.hn.domain.UsrAdmin;
 import com.hn.domain.UsrRoot;
 import com.hn.service.UsrAdminService;
@@ -86,9 +87,14 @@ public class UsrRootController {
     public Result<Object> getAllRoot(@ApiParam("当前页码") Integer pn,
                                      @ApiParam("每页显示的Root数量") Integer pageSize,
                                      @ApiParam("模糊条件，要查询的Root姓名") String RootName) {
-        //根据姓名模糊查询
-        Page<UsrRoot> page = usrRootService.page(new Page<>(pn, pageSize), new LambdaQueryWrapper<UsrRoot>()
-                .like(RootName != null, UsrRoot::getName, RootName).orderByAsc(UsrRoot::getRootId));
+        //1.构造查询条件
+        LambdaQueryWrapper<UsrRoot> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //2.根据id升序排列
+        lambdaQueryWrapper.like(StrUtil.isNotBlank(RootName),UsrRoot::getName,RootName).
+                like(StrUtil.isNotBlank(RootName),UsrRoot::getName,RootName).orderByAsc(UsrRoot::getRootId);
+        //3.分页查询,并封装到page对象中
+        Page<UsrRoot> page = usrRootService.page(new Page<>(pn, pageSize), lambdaQueryWrapper);
+        //4.返回结果
         return Result.ok(page);
     }
 

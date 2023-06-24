@@ -52,10 +52,10 @@ public class SystemController {
 
     /**
      * 登录:进行验证码以及用户输入的账号密码进行校验
-     *
      * @return 将校验的结果数据封装到Result类中返回给浏览器
      * 若用户登录成功,则根据(id和用户类型)生成一个token放在Result类一起返回给浏览器
-     * @RequestBody:将请求体中的json数据封装到实体类RequestForm中,并将实体类对象作为参数传递给login方法, LoginForm是RequestForm的子类, HttpSession是springmvc中的对象, 用于获取session域中的数据
+     * @RequestBody:将请求体中的json数据封装到实体类RequestForm中,并将实体类对象作为参数传递给login方法,
+     * LoginForm是RequestForm的子类, HttpSession是springmvc中的对象, 用于获取session域中的数据
      */
     @ApiOperation("登陆功能，若登陆成功，将查询到的用户信息、用户类型，封装到id和userType中，生成token返回给前端")
     @PostMapping("/login")
