@@ -29,4 +29,4 @@ spring:
 
 upload:
     file:
-        location: D:/smart_campus-master/smart_campus-master/module_campus/src/main/resources/static/upload/
+        location: D:/SpringBootCodes/hn_pro/src/main/resources/static/upload

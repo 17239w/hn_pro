@@ -56,7 +56,7 @@ public class UsrAdminController {
     @GetMapping("/getAllAdmin/{pn}/{pageSize}")
     public Result<Object> getAllAdmin(@ApiParam("当前页码")@PathVariable("pn")Integer pn,
                                       @ApiParam("每页显示的Admin数量")@PathVariable("pageSize")Integer pageSize,
-                                        @ApiParam("模糊条件，要查询的Admin姓名")String AdminName){
+                                      @ApiParam("模糊条件，要查询的Admin姓名")String AdminName){
         //1.构造查询条件
         LambdaQueryWrapper<UsrAdmin> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         //2.根据姓名模糊查询
