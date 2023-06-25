@@ -4,26 +4,17 @@ import com.hn.service.FilesService;
 import com.hn.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
+
 
 @Api(tags = "文件管理层")
 @RestController
@@ -37,23 +28,25 @@ public class FilesController {
      */
     @ApiOperation("上传文件")
     @PostMapping("/uploadfiles")
-    public Result<Object> uploadfiles(@ApiParam("封装请求体中的文件的二进制数据")
-                                      @RequestPart("multipartFile") MultipartFile multipartFile )throws IOException {
-        String originalFilename = multipartFile.getOriginalFilename();
-        assert originalFilename != null;
-        /*形成新的文件名fileName:
-        UUID.randomUUID().toString()生成一个随机的UUID。
-        .replace("-","") 将 UUID 中的连字符 - 替换为空串，从而得到只包含字母和数字的字符串。
-        .toLowerCase()将字符串转换为小写字母。
-        .concat(originalFilename.substring(originalFilename.lastIndexOf(".")))将原始文件名的文件扩展名添加到字符串末尾，从而形成新的文件名。*/
-        String fileName= UUID.randomUUID().toString().replace("-","").toLowerCase().
-                concat(originalFilename.substring(originalFilename.lastIndexOf(".")));
-        //文件保存路径：concat()拼接文件名和路径名
-        String savePath="D:/SpringBootCodes/hn_pro/src/main/resources/static/upload".concat(fileName);
-        //将客户端上传的文件保存到服务器硬盘上，savePath为文件保存路径
-        multipartFile.transferTo(new File(savePath));
-        //返回文件路径
-        return Result.ok("upload/".concat(fileName));
+    public Result<Object> uploadfiles(@RequestParam(value = "file", required = true) MultipartFile file) {
+        try {
+            // 本地文件保存位置
+            String uploadPath = "D:/SpringBootCodes/hn_pro/src/main/resources/static/upload";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+//            //打印上传文件位置
+//            log.info(uploadDir.getAbsolutePath());
+            // 本地文件
+            File localFile = new File(uploadPath + File.separator + file.getOriginalFilename());
+            // 写文件到本地
+            file.transferTo(localFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.fail();
+        }
+        return Result.ok();
     }
 
     /**
@@ -93,7 +86,29 @@ public class FilesController {
         return Result.ok(files);
     }
 
+    /**
+     * 下载文件
+     */
+    @ApiOperation("下载文件")
+    @GetMapping("/downloadfiles")
+    public void downloadfiles(HttpServletResponse response) {
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-disposition",
+                "attachment;filename=file_" + System.currentTimeMillis() + ".hprof");
 
+        // 从文件读到servlet response输出流中
+        File file = new File("D:/SpringBootCodes/hn_pro/src/main/resources/static/upload");
+        try (FileInputStream inputStream = new FileInputStream(file);) { // try-with-resources
+            byte[] b = new byte[1024];
+            int len;
+            while ((len = inputStream.read(b)) > 0) {
+                response.getOutputStream().write(b, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
