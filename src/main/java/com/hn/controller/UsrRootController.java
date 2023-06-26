@@ -29,7 +29,7 @@ public class UsrRootController {
     private UsrAdminService usrAdminService;
 
     /**
-     * Root拥有查询UsrRoot信息的权限
+     * 展示所有UsrRoot信息
      * @return
      */
     @ApiOperation("展示所有UsrRoot信息")
@@ -112,8 +112,8 @@ public class UsrRootController {
 
 
     /**
-     * Root拥有删除Admin的权限
-     * 逻辑删除 将deleted_flag设置为1
+     * Root拥有逻辑删除Admin的权限
+     * 将deleted_flag设置为1
      * @param adminIds
      * @return
      */

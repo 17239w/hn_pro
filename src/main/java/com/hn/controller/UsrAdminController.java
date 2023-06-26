@@ -26,7 +26,7 @@ public class UsrAdminController {
     private UsrAdminService usrAdminService;
 
     /**
-     * Admin拥有查询UsrAdmin信息的权限
+     * 展示所有UsrAdmin信息
      * @return
      */
     @ApiOperation("展示所有UsrAdmin信息")
@@ -59,7 +59,7 @@ public class UsrAdminController {
     }
 
     /**
-     * 根据姓名查询UsrAdmin信息
+     * 模糊查询Admin信息
      * @param pn
      * @param pageSize
      * @param AdminName
