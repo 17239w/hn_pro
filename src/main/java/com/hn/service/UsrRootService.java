@@ -3,6 +3,8 @@ package com.hn.service;
 import com.hn.domain.UsrRoot;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import javax.servlet.ServletOutputStream;
+
 /**
 * @author 15170
 * @description 针对表【usr_root】的数据库操作Service
@@ -14,4 +16,5 @@ public interface UsrRootService extends IService<UsrRoot> {
 
     UsrRoot selectUsrRootById(Long userId);
 
+    void downloadExcel_UsrRoot(ServletOutputStream outputStream);
 }

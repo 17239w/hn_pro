@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Api(tags = "UsrRoot管理层")
@@ -26,6 +27,17 @@ public class UsrRootController {
     private UsrRootService usrRootService;
     @Resource
     private UsrAdminService usrAdminService;
+
+    /**
+     * Root拥有查询UsrRoot信息的权限
+     * @return
+     */
+    @ApiOperation("展示所有UsrRoot信息")
+    @GetMapping("/selectAllUsrRoot")
+    public Result<List<UsrRoot>> selectAllUsrRoot() {
+        List<UsrRoot> usrRootList = usrRootService.list();
+        return Result.ok(usrRootList);
+    }
 
 
     /**
@@ -143,5 +155,25 @@ public class UsrRootController {
             }
         }
         return Result.ok();
+    }
+
+    /**
+     * 以Excel格式导出UsrRoot信息
+     */
+    @ApiOperation("导出Excel表格")
+    @GetMapping("/excel/download")
+    public void download(HttpServletResponse response){
+        try{
+            //1.清除当前HTTP响应的缓冲区
+            response.reset();
+            //2.将HTTP响应的内容类型设置为“application/vnd.ms-excel”
+            response.setContentType("application/vnd.ms-excel;charset=utf-8");
+            //3.设置Content-Disposition响应头
+            response.setHeader("Content-Disposition",
+                    "attachment;filename=UsrRoot_excel_"+System.currentTimeMillis()+".xls");
+            usrAdminService.downloadExcel_UsrAdmin(response.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -14,6 +14,8 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Api(tags = "UsrAdmin管理层")
@@ -22,6 +24,17 @@ import java.util.List;
 public class UsrAdminController {
     @Resource
     private UsrAdminService usrAdminService;
+
+    /**
+     * Admin拥有查询UsrAdmin信息的权限
+     * @return
+     */
+    @ApiOperation("展示所有UsrAdmin信息")
+    @GetMapping("/selectAllUsrAdmin")
+    public Result<List<UsrAdmin>> selectAllUsrAdmin() {
+        List<UsrAdmin> usrAdminList = usrAdminService.list();
+        return Result.ok(usrAdminList);
+    }
 
     /**
      * Admin拥有添加或者更新UsrAdmin信息的权限
@@ -66,5 +79,25 @@ public class UsrAdminController {
         Page<UsrAdmin> page = usrAdminService.page(new Page<>(pn, pageSize), lambdaQueryWrapper);
         //4.返回结果
         return Result.ok(page);
+    }
+
+    /**
+     * 导出Excel表格
+     */
+    @ApiOperation("导出Excel表格")
+    @GetMapping("/excel/download")
+    public void download(HttpServletResponse response){
+        try{
+            //1.清除当前HTTP响应的缓冲区
+            response.reset();
+            //2.将HTTP响应的内容类型设置为“application/vnd.ms-excel”
+            response.setContentType("application/vnd.ms-excel;charset=utf-8");
+            //3.设置Content-Disposition响应头
+            response.setHeader("Content-Disposition",
+                    "attachment;filename=UsrAdmin_excel_"+System.currentTimeMillis()+".xls");
+            usrAdminService.downloadExcel_UsrAdmin(response.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
